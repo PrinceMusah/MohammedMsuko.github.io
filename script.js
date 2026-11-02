@@ -1,0 +1,3 @@
+var els=[].slice.call(document.querySelectorAll("[data-sw]")),en=els.map(function(e){return e.textContent}),sw=els.map(function(e){return e.getAttribute("data-sw")}),b=document.getElementById("lang"),cur="en";
+function set(l){cur=l;els.forEach(function(e,i){e.textContent=l=="sw"?sw[i]:en[i]});document.documentElement.lang=l;b.textContent=l=="sw"?"English":"Kiswahili";try{localStorage.setItem("l",l)}catch(x){}}
+b.onclick=function(){set(cur=="en"?"sw":"en")};try{if(localStorage.getItem("l")=="sw")set("sw")}catch(x){}
